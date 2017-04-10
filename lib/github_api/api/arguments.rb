@@ -123,6 +123,14 @@ module Github
         self
       end
 
+      # Check that keys are NOT present inside parameters hash.
+      #
+      # @api public
+      def assert_absent(*absent)
+        assert_absent_keys(required, params)
+        self
+      end
+
       # Check if parameters match expected values.
       #
       # @api public

@@ -8,6 +8,7 @@ gem 'rack', '< 2.0'
 group :development do
   gem 'yard',     '~> 0.8.7'
   gem 'pry'
+  gem 'pry-byebug'
 end
 
 group :metrics do

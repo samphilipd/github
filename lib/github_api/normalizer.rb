@@ -1,4 +1,5 @@
 # encoding: utf-8
+      require 'pry'
 
 module Github
   # Deals with normalazing client supplied parameter keys.
@@ -9,17 +10,16 @@ module Github
       case params
       when Hash
         params.keys.each do |k|
-          params[k.to_s] = params.delete(k)
-          normalize!(params[k.to_s])
+          normalized_key = k.is_a?(Integer) ? k : k.to_s
+          params[normalized_key] = params.delete(k)
+          normalize!(params[normalized_key])
         end
       when Array
         params.map! do |el|
           normalize!(el)
         end
-      else
-        params.to_s
       end
-      return params
+      params
     end
   end # Normalizer
 end # Github
